@@ -8,6 +8,7 @@ date: 2024-07-16
 
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.dates import DateFormatter
 
 class Aux():
 
@@ -99,8 +100,14 @@ class Aux():
         '''
         Plot de série temporal
         '''
-        plt.figure(figsize=(10, 6))  # Define o tamanho da figura
-        plt.plot(df['timestamp'], df[varname], linestyle='-',marker='.')
+        fig = plt.figure(figsize=(10, 6))
+        ax = fig.add_subplot(1, 1, 1)
+        ax.plot(df['timestamp'], df[varname], linestyle='-',marker='.')
+        # Se todos os timestamps pertencem ao mesmo dia, alterar o rótulo do eixo x
+        if df['timestamp'].dt.date.nunique() == 1:
+            date_form = DateFormatter("%H:%M")
+            ax.xaxis.set_major_formatter(date_form)
+            fig.autofmt_xdate()
         plt.title(title_str)
         plt.grid(True)
         plt.xticks(rotation=45)

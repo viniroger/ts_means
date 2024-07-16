@@ -23,3 +23,5 @@ Script principal (main.py) chama o arquivo de métodos (helpers/ts_means.py, que
 ![](files/ts_h.png)
 
 Os dados utilizados como exemplo vieram originalmente da campanha experimental [GoAmazon](https://www.arm.gov/research/campaigns/amf2014goamazon). Referem-se ao somatório dos valores de fração de cobertura de nuvens finas e espessas (cf) obtidos pelo algoritmo de análise de imagens all sky do equipamento TSI. Esses valores foram normalizados de -1 a 1 e selecionados aleatoriamente para uma amostra significativa, porém de menor tamanho.
+
+Obs.: Se todos os dados/timestamps pertencem ao mesmo dia, o método plot_ts altera o rótulo do eixo x para imprimir no formato HH:MM, em vez de YYYY-MM.
