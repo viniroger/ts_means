@@ -31,6 +31,7 @@ class Aux():
         newdf = df.loc[newdf]
         return newdf
 
+    @staticmethod
     def convert_timestamp(df):
         '''
         Converter a coluna timestamp para o formato de data/hora do pandas
@@ -52,7 +53,7 @@ class Aux():
         # Contar numero de amostras de cada mês
         #print(df[varname].resample('M').count())
         # Resample para calcular a média mensal
-        mean_df = df[varname].resample('M').agg(['mean', 'std']).set_index(pd.date_range(start=df.index.min(), periods=len(df['cf'].resample('M')), freq='MS'))
+        mean_df = df[varname].resample('M').agg(['mean', 'std']).set_index(pd.date_range(start=df.index.min(), periods=len(df[varname].resample('M')), freq='MS'))
         # Recriar coluna timestamp
         mean_df['timestamp'] = mean_df.index
         return mean_df
@@ -96,6 +97,7 @@ class Aux():
         mv.loc[:,'timestamp'] = pd.to_datetime(mv['timestamp'], format='%H%M%S')
         return mv
 
+    @staticmethod
     def plot_ts(df, varname, fname, title_str):
         '''
         Plot de série temporal

@@ -22,4 +22,4 @@ Aux.plot_ts(df_month, 'mean', 'files/ts_month.png', 'Monthly means')
 
 # Gráfico das médias para padrão diurno
 df_h = Aux.mean_h(df)
-Aux.plot_ts(df_h, 'cf', 'files/ts_h.png', 'Diurnal pattern')
+Aux.plot_ts(df_h, varname, 'files/ts_h.png', 'Diurnal pattern')
